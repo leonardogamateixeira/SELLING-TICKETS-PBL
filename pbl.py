@@ -37,7 +37,6 @@ match NumOpMenu:
         exit()
 
 # Após selecionar ou a versão ou configurar começa a tela de vendas onde eu pré-criei algumas variaveis fora do while para guardar as informações e elas não serem perdidas nos loops
-
 IntVendas = 0
 EstudanteVendas = 0
 IdosoVendas = 0
@@ -107,9 +106,6 @@ Selecione um tipo de ingresso:
 
     EventoFim = int(input("Gostaria de encerrar o evento?\n1-Sim\n2-Não"))
 
-
-
-
 RsMeia = ((EstudanteVendas+IdosoVendas)*precoMeia)
 RsInt = (IntVendas*precoInt)
 RsDesc = (DescontoVendas*precoDesc)
@@ -127,8 +123,6 @@ elif DescontoVendas > EstudanteVendas and DescontoVendas > IdosoVendas and Desco
     MaisVendas = "Descontos"
 else:
     MaisVendas = "Inteira"
-
-
 
 print(f'''
 Total de ingressos Vendidos: {VendasIngFinal};\n 
