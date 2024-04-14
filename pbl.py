@@ -37,7 +37,9 @@ match NumOpMenu:
         exit()
 
 # Após selecionar ou a versão ou configurar começa a tela de vendas onde eu pré-criei algumas variaveis fora do while para guardar as informações e elas não serem perdidas nos loops
+
 IntVendas = 0
+DAcortesias = 0
 EstudanteVendas = 0
 IdosoVendas = 0
 CortesiaVenda = 0
@@ -50,10 +52,10 @@ while ingressos > 0 and EventoFim > 1:
 
 Selecione um tipo de ingresso:
 1- Inteira
-2- Meia-entrada(Estudante)1
+2- Meia-entrada(Estudante)
 3- Meia-entrada(idoso)
-4- Cortesia
-5- Descontos
+4- Descontos
+5- Cortesia
 '''))
 # o usuario seleciona qual tipo de ingresso será vendido e pergunta quantos ingressos foram vendidos e soma suas idades com o uma estrutura de repetição, que repetira a pergunta de idade para cada ingresso que foi vendido.
     VendasIng = 0
@@ -97,14 +99,20 @@ Selecione um tipo de ingresso:
             else:
                 comprovante = 0
                 print("Garanta que todas as compras sejam comprovadas antes de continuar com o cadastro por favor.")
-    if (ingressos - Cortesia) > 0:
-        ingressos -= Cortesia
-        print("Compras registradas!")
-        print(f"Ainda restam {ingressos} ingressos")
-    else:
-        print("Acabaram os ingressos, por tanto as cortesias não puderam ser adcionadas")
+#cortesia DA
+        case 5:
+            ingressos -= VendasIng
+            DAcortesias += VendasIng
 
-    EventoFim = int(input("Gostaria de encerrar o evento?\n1-Sim\n2-Não"))
+    if (ingressos - Cortesia) >= 0:
+        ingressos -= Cortesia
+        if ingressos > 0:
+            print(f"Foram dadas {Cortesia} cortesias\nainda restam {ingressos} ingressos.")
+            EventoFim = int(input("Gostaria de encerrar o evento?\n1-Sim\n2-Não"))
+        else:
+            print(f"Foram dadas {Cortesia} cortesias\nnão restam mais ingressos.")   
+    else:
+        print(f"Não foi possivel adcionar as as {Cortesia} cortesias,pois restam apenas {ingressos} ingressos.")
 
 RsMeia = ((EstudanteVendas+IdosoVendas)*precoMeia)
 RsInt = (IntVendas*precoInt)
@@ -120,15 +128,15 @@ if EstudanteVendas > IdosoVendas and EstudanteVendas > IntVendas and EstudanteVe
 elif IdosoVendas > EstudanteVendas and IdosoVendas > IntVendas and EstudanteVendas > DescontoVendas:
     MaisVendas = "Meia-entrada para idosos"
 elif DescontoVendas > EstudanteVendas and DescontoVendas > IdosoVendas and DescontoVendas > IntVendas:
-    MaisVendas = "Descontos"
+    MaisVendas = "Desconto"
 else:
     MaisVendas = "Inteira"
 
 print(f'''
-Total de ingressos Vendidos: {VendasIngFinal};\n 
-Ingressos restantes: {ingressos};\n 
+Total de ingressos emitidos: {VendasIngFinal};\n 
+Ingressos não emitidos: {ingressos};\n 
 Total de meia-entradas para estudantes vendidas: {EstudanteVendas};\n
-Total de meia-entradas para Idosos vendidas: {IdosoVendas};\n
+Total de meia-entradas para idosos vendidas: {IdosoVendas};\n
 Total de inteiras vendidas: {IntVendas};\n
 Total de descontos vendidos: {DescontoVendas};\n
 Cortesias para DA e convidados: {Cortesia};\n
@@ -137,5 +145,9 @@ Total de dinheiro das meia-entradas: R${RsMeia};\n
 Total de dinheiro das inteiras: R${RsInt};\n
 Total de dinheiro das descontos: R${RsDesc};\n
 Ingresso mais vendido: {MaisVendas};\n
-Média de idade dos compradores: {MediaIdade}
-''')
+Média de idade dos compradores: {round(MediaIdade, 2)} 
+''')                         # ver esse round se ta certo msm
+
+# quantidade de cortesias para integrantes do DA e convidados
+# quantidade total de cortesias para vendedores comissionados
+# quantidade de ingressos vendidos por vendedores do curso de Biologia e de Enfermagem
