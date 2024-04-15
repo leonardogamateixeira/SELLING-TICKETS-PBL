@@ -54,7 +54,9 @@ while ingressos > 0 and EventoFim > 1:
 5- Cortesia
                          
 Selecione um tipo de ingresso: '''))
-# o usuario seleciona qual tipo de ingresso será vendido e pergunta quantos ingressos foram vendidos e soma suas idades com o uma estrutura de repetição, que repetira a pergunta de idade para cada ingresso que foi vendido.
+# o usuario seleciona qual tipo de ingresso será vendido e pergunta quantos ingressos foram 
+# vendidos e soma suas idades com o uma estrutura de repetição, que repetira a pergunta de
+# idade para cada ingresso que foi vendido.
     VendasIng = 0
     VendasIng = int(input("Quantos ingressos foram vendidos? "))
     IdadeSoma = 0
@@ -65,12 +67,15 @@ Selecione um tipo de ingresso: '''))
     Cortesia = VendasIng // 10
 
     match NumOpIng:
-#inteira
+# Caso o usuario selecione a opção inteira 
         case 1:
             ingressos -= VendasIng
             IntVendas += VendasIng
-#meia-estudante
+# Caso o usuario selecione a opção meia-estudante
         case 2:
+# usei if-else para o usuario confirmar que as compras são validas
+# em todas as opções abaixo foram usadas essa confirmação para saber
+# se as compras são validas
             NumOpTipo = int(input("Todas compras foram mostradas a carteira de estudante?\n1-Sim\n2-Não"))
             if NumOpTipo == 1:
                 ingressos -= VendasIng
@@ -78,7 +83,7 @@ Selecione um tipo de ingresso: '''))
             else:
                 comprovante = 0
                 print("Garanta que todas as compras sejam comprovadas antes de continuar com o cadastro por favor.")
-#meia-idoso
+# Caso o usuario selecione a opção meia-idoso
         case 3:
             NumOpTipo = int(input("Todas compras foram mostradas a carteira idoso?\n1-Sim\n2-Não"))
             if NumOpTipo == 1:
@@ -87,7 +92,7 @@ Selecione um tipo de ingresso: '''))
             else:
                 comprovante = 0
                 print("Garanta que todas as compras sejam comprovadas antes de continuar com o cadastro por favor.")
-#desconto
+# Caso o usuario selecione a opção desconto
         case 4:
             NumOpTipo = int(input("Todas compras foram mostradas o devido comprovante de desconto?\n1-Sim\n2-Não"))
             if NumOpTipo == 1:
@@ -96,21 +101,26 @@ Selecione um tipo de ingresso: '''))
             else:
                 comprovante = 0
                 print("Garanta que todas as compras sejam comprovadas antes de continuar com o cadastro por favor.")
-#cortesia DA
+# Caso o usuario selecione a opção cortesia DA
         case 5:
             ingressos -= VendasIng
             DAcortesias += VendasIng
-
+# Ao final o progama verifica se é possivel dar cortesias ao vendedor
     if (ingressos - Cortesia) >= 0:
         ingressos -= Cortesia
         if ingressos > 0:
+# Caso seja possivel serão mostradas as cortesias e os ingressos 
+# depois é perguntado ao usuario se gostaria de encerrar o evento
             print(f"Foram dadas {Cortesia} cortesias\nainda restam {ingressos} ingressos.")
             EventoFim = int(input("Gostaria de encerrar o evento?\n1-Sim\n2-Não"))
         else:
+# Caso de para adcionar as cortesias e não restar mais ingressos sera impresso isso
             print(f"Foram dadas {Cortesia} cortesias\nnão restam mais ingressos.")   
     else:
+# Caso não seja possivel dar cortesias sera impresso isso
         print(f"Não foi possivel adcionar as as {Cortesia} cortesias,pois restam apenas {ingressos} ingressos.")
 
+# Aqui são feitos os calculos para imprimir os valores finais do progama
 RsMeia = ((EstudanteVendas+IdosoVendas)*precoMeia)
 RsInt = (IntVendas*precoInt)
 RsDesc = (DescontoVendas*precoDesc)
@@ -128,7 +138,7 @@ elif DescontoVendas > EstudanteVendas and DescontoVendas > IdosoVendas and Desco
     MaisVendas = "Desconto"
 else:
     MaisVendas = "Inteira"
-
+# Impressão final do progama
 print(f'''
 Total de ingressos emitidos: {VendasIngFinal};\n 
 Ingressos não emitidos: {ingressos};\n 
