@@ -160,7 +160,7 @@ Total de cortesias para vendedores comissionados: {CortesiaFinal};
 Total de dinheiro arrecadado: R${RsTotal};\n
 Total de dinheiro das meia-entradas: R${RsMeia};\n
 Total de dinheiro das inteiras: R${RsInt};\n
-Total de dinheiro das descontos: R${RsDesc};\n
+Total de dinheiro dos descontos: R${RsDesc};\n
 Ingresso mais vendido: {MaisVendas};\n
-Média de idade dos compradores: {round(MediaIdade, 2)} 
+Média de idade dos compradores: {round(MediaIdade, 2)} +
 ''')
