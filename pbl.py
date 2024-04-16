@@ -27,7 +27,7 @@ match NumOpMenu:
             ingressos = int(input("Digite a quantidade de ingressos: "))
             precoInt = float(input("Digite o preço do ingresso: R$"))
             precoMeia = float(input("Digite o preço da meia-entrada: R$"))
-            precoDesc = float(input("Caso aja algum desconto digite-o, caso não digite 0: R$"))
+            precoDesc = float(input("Digite o preço do ingresso com desconto, caso não tenha digite 0: R$"))
     case 2:
 # Versão do problema proposto vai ser selecionada e as os valores
 # do problema serão utilizados nas respectivas variáveis
@@ -90,8 +90,9 @@ Selecione um tipo de ingresso: '''))
                 ingressos -= VendasIng
                 EstudanteVendas += VendasIng
             else:
-                comprovante = 0
+                IdadeSoma -= idade
                 print("Garanta que todas as compras sejam comprovadas antes de continuar com o cadastro por favor.")
+
 # Caso o usuario selecione a opção meia-idoso
         case 3:
             NumOpTipo = int(input("Todas compras foram mostradas a carteira idoso?\n1-Sim\n2-Não"))
@@ -99,7 +100,7 @@ Selecione um tipo de ingresso: '''))
                 ingressos -= VendasIng
                 EstudanteVendas += VendasIng
             else:
-                comprovante = 0
+                IdadeSoma -= idade
                 print("Garanta que todas as compras sejam comprovadas antes de continuar com o cadastro por favor.")
 # Caso o usuario selecione a opção desconto
         case 4:
@@ -108,7 +109,7 @@ Selecione um tipo de ingresso: '''))
                 ingressos -= VendasIng
                 EstudanteVendas += VendasIng
             else:
-                comprovante = 0
+                IdadeSoma -= idade
                 print("Garanta que todas as compras sejam comprovadas antes de continuar com o cadastro por favor.")
 # Caso o usuario selecione a opção cortesia DA
         case 5:
