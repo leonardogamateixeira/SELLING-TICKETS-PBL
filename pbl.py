@@ -127,7 +127,7 @@ Qual o curso do vendedor?
 # Caso o usuario selecione a opção cortesia DA
         case 5:
             ingressos -= VendasIng
-            DAcortesias += VendasIng
+            DAcortesias += VendasIng           
 # Ao final o progama verifica se é possivel dar cortesias ao vendedor
     if (ingressos - Cortesia) >= 0:
         ingressos -= Cortesia
@@ -139,7 +139,7 @@ Qual o curso do vendedor?
             EventoFim = int(input("Gostaria de encerrar o evento?\n1-Sim\n2-Não"))
         else:
 # Caso de para adcionar as cortesias e não restar mais ingressos sera impresso isso
-            print(f"Foram dadas {Cortesia} cortesias\nnão restam mais ingressos.")   
+            print(f"Foram dadas {Cortesia} cortesias\nnão restam mais ingressos.")
     else:
 # Caso não seja possivel dar cortesias sera impresso isso
         print(f"Não foi possivel adcionar as as {Cortesia} cortesias,pois restam apenas {ingressos} ingressos.")
@@ -167,7 +167,7 @@ else:
     MaisVendas = "Inteira"
 # Impressão final do progama
 print(f'''
-Total de ingressos emitidos: {VendasIngFinal};\n 
+Total de ingressos emitidos: {VendasIngFinal};\n
 Ingressos não emitidos: {ingressos};\n 
 Total de meia-entradas para estudantes vendidas: {EstudanteVendas};\n
 Total de meia-entradas para idosos vendidas: {IdosoVendas};\n
@@ -182,5 +182,5 @@ Total de dinheiro das meia-entradas: R${RsMeia};\n
 Total de dinheiro das inteiras: R${RsInt};\n
 Total de dinheiro dos descontos: R${RsDesc};\n
 Ingresso mais vendido: {MaisVendas};\n
-Média de idade dos compradores: {round(MediaIdade, 2)} +
+Média de idade dos compradores: {round(MediaIdade, 2)}
 ''')
