@@ -1,4 +1,3 @@
-
 # Autor: Leonardo Gama Teixeira
 # Componente Curricular: 2024.1 EXA854 - MI - ALGORITMOS (TP03) 
 # Concluido em: 15/04/2024
@@ -7,7 +6,6 @@
 # apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
 # de outra autoria que não a minha está destacado com uma citação para o autor e a fonte
 # do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
-
 
 # Essa parte é apenas para qual menu inicial, onde o usuario seleciona
 # se vai configurar o progama, usar a versão padrão(a do problema) 
@@ -47,6 +45,7 @@ match NumOpMenu:
 # variaveis fora do while para guardar as informações e elas não serem perdidas nos loops
 
 IntVendas = 0
+CortesiaFinal = 0
 DAcortesias = 0
 EstudanteVendas = 0
 IdosoVendas = 0
@@ -68,7 +67,6 @@ Selecione um tipo de ingresso: '''))
 # o usuario seleciona qual tipo de ingresso será vendido e pergunta quantos ingressos foram 
 # vendidos e soma suas idades com o uma estrutura de repetição, que repetira a pergunta de
 # idade para cada ingresso que foi vendido.
-    VendasIng = 0
     VendasIng = int(input("Quantos ingressos foram vendidos? "))
     IdadeSoma = 0
     for idade in range(0,VendasIng):
@@ -119,6 +117,7 @@ Selecione um tipo de ingresso: '''))
 # Ao final o progama verifica se é possivel dar cortesias ao vendedor
     if (ingressos - Cortesia) >= 0:
         ingressos -= Cortesia
+        CortesiaFinal += Cortesia
         if ingressos > 0:
 # Caso seja possivel serão mostradas as cortesias e os ingressos 
 # depois é perguntado ao usuario se gostaria de encerrar o evento
@@ -136,10 +135,8 @@ RsMeia = ((EstudanteVendas+IdosoVendas)*precoMeia)
 RsInt = (IntVendas*precoInt)
 RsDesc = (DescontoVendas*precoDesc)
 RsTotal = RsMeia + RsInt + RsDesc
-
-VendasIngFinal = IntVendas + EstudanteVendas + IdosoVendas + DescontoVendas + Cortesia
-
-MediaIdade = IdadeSoma / VendasIngFinal
+VendasIngFinal = IntVendas + EstudanteVendas + IdosoVendas + DescontoVendas + DAcortesias + CortesiaFinal
+MediaIdade = IdadeSoma / (VendasIngFinal - CortesiaFinal)
 
 if EstudanteVendas > IdosoVendas and EstudanteVendas > IntVendas and EstudanteVendas > DescontoVendas:
     MaisVendas = "Meia-entrada para estudantes"
@@ -158,7 +155,7 @@ Total de meia-entradas para idosos vendidas: {IdosoVendas};\n
 Total de inteiras vendidas: {IntVendas};\n
 Total de descontos vendidos: {DescontoVendas};\n
 Cortesias para DA e convidados: {DAcortesias};\n
-Total de cortesias para vendedores comissionados: {Cortesia};
+Total de cortesias para vendedores comissionados: {CortesiaFinal};
 Total de dinheiro arrecadado: R${RsTotal};\n
 Total de dinheiro das meia-entradas: R${RsMeia};\n
 Total de dinheiro das inteiras: R${RsInt};\n
