@@ -1,4 +1,3 @@
-
 # Autor: Leonardo Gama Teixeira
 # Componente Curricular: 2024.1 EXA854 - MI - ALGORITMOS (TP03) 
 # Concluido em: 15/04/2024
@@ -7,7 +6,6 @@
 # apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
 # de outra autoria que não a minha está destacado com uma citação para o autor e a fonte
 # do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
-
 
 # Essa parte é apenas para qual menu inicial, onde o usuario seleciona
 # se vai configurar o progama, usar a versão padrão(a do problema) 
@@ -51,6 +49,7 @@ match NumOpMenu:
 # variaveis fora do while para guardar as informações e elas não serem perdidas nos loops
 
 IntVendas = 0
+CortesiaFinal = 0
 DAcortesias = 0
 EstudanteVendas = 0
 IdosoVendas = 0
@@ -80,7 +79,6 @@ Qual o curso do vendedor?
 1- {curso1}
 2- {curso2} '''))
     
-    VendasIng = 0
     VendasIng = int(input("Quantos ingressos foram vendidos? "))
 
     IdadeSoma = 0
@@ -132,6 +130,7 @@ Qual o curso do vendedor?
 # Ao final o progama verifica se é possivel dar cortesias ao vendedor
     if (ingressos - Cortesia) >= 0:
         ingressos -= Cortesia
+        CortesiaFinal += Cortesia
         if ingressos > 0:
 # Caso seja possivel serão mostradas as cortesias e os ingressos 
 # depois é perguntado ao usuario se gostaria de encerrar o evento
@@ -154,10 +153,8 @@ RsMeia = ((EstudanteVendas+IdosoVendas)*precoMeia)
 RsInt = (IntVendas*precoInt)
 RsDesc = (DescontoVendas*precoDesc)
 RsTotal = RsMeia + RsInt + RsDesc
-
-VendasIngFinal = IntVendas + EstudanteVendas + IdosoVendas + DescontoVendas + Cortesia
-
-MediaIdade = IdadeSoma / VendasIngFinal
+VendasIngFinal = IntVendas + EstudanteVendas + IdosoVendas + DescontoVendas + DAcortesias + CortesiaFinal
+MediaIdade = IdadeSoma / (VendasIngFinal - CortesiaFinal)
 
 if EstudanteVendas > IdosoVendas and EstudanteVendas > IntVendas and EstudanteVendas > DescontoVendas:
     MaisVendas = "Meia-entrada para estudantes"
@@ -178,7 +175,7 @@ Total de descontos vendidos: {DescontoVendas};\n
 Cortesias para DA e convidados: {DAcortesias};\n
 Cortesias para o curso de {curso1}: {CortCurso1};
 Cortesias para o curso de {curso2}: {CortCurso2};
-Total de cortesias para vendedores comissionados: {Cortesia};
+Total de cortesias para vendedores comissionados: {CortesiaFinal};
 Total de dinheiro arrecadado: R${RsTotal};\n
 Total de dinheiro das meia-entradas: R${RsMeia};\n
 Total de dinheiro das inteiras: R${RsInt};\n
