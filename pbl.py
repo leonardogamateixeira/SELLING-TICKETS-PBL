@@ -30,6 +30,8 @@ match NumOpMenu:
             precoInt = float(input("Digite o preço do ingresso: R$"))
             precoMeia = float(input("Digite o preço da meia-entrada: R$"))
             precoDesc = float(input("Caso aja algum desconto digite-o, caso não digite 0: R$"))
+            curso1 = input("Digite o primeiro curso que está participando das vendas: ")
+            curso2 = input("Digite o segundo curso que está participando das vendas: ")
     case 2:
 # Versão do problema proposto vai ser selecionada e as os valores
 # do problema serão utilizados nas respectivas variáveis
@@ -38,6 +40,8 @@ match NumOpMenu:
         precoInt = 30      
         precoMeia = 15
         precoDesc = 10
+        curso1 = "Biologia"
+        curso2 = "Enfermagem"
     case 3:
 # Encerra o progama
         print("Encerrando progama")
@@ -53,6 +57,8 @@ IdosoVendas = 0
 CortesiaVenda = 0
 DescontoVendas = 0
 EventoFim = 2
+CortCurso1 = 0
+CortCurso2 = 0
 
 while ingressos > 0 and EventoFim > 1:
     NumOpIng = int(input('''
@@ -68,8 +74,15 @@ Selecione um tipo de ingresso: '''))
 # o usuario seleciona qual tipo de ingresso será vendido e pergunta quantos ingressos foram 
 # vendidos e soma suas idades com o uma estrutura de repetição, que repetira a pergunta de
 # idade para cada ingresso que foi vendido.
+
+    CursoOp = int(input(f'''
+Qual o curso do vendedor?
+1- {curso1}
+2- {curso2} '''))
+    
     VendasIng = 0
     VendasIng = int(input("Quantos ingressos foram vendidos? "))
+
     IdadeSoma = 0
     for idade in range(0,VendasIng):
         idade = int(input("Digite a idade de cada cliente: "))
@@ -131,6 +144,11 @@ Selecione um tipo de ingresso: '''))
 # Caso não seja possivel dar cortesias sera impresso isso
         print(f"Não foi possivel adcionar as as {Cortesia} cortesias,pois restam apenas {ingressos} ingressos.")
 
+    if CursoOp == 1:
+        CortCurso1 += Cortesia
+    else:
+        CortCurso2 += Cortesia
+
 # Aqui são feitos os calculos para imprimir os valores finais do progama
 RsMeia = ((EstudanteVendas+IdosoVendas)*precoMeia)
 RsInt = (IntVendas*precoInt)
@@ -158,6 +176,8 @@ Total de meia-entradas para idosos vendidas: {IdosoVendas};\n
 Total de inteiras vendidas: {IntVendas};\n
 Total de descontos vendidos: {DescontoVendas};\n
 Cortesias para DA e convidados: {DAcortesias};\n
+Cortesias para o curso de {curso1}: {CortCurso1};
+Cortesias para o curso de {curso2}: {CortCurso2};
 Total de cortesias para vendedores comissionados: {Cortesia};
 Total de dinheiro arrecadado: R${RsTotal};\n
 Total de dinheiro das meia-entradas: R${RsMeia};\n
