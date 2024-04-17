@@ -174,9 +174,9 @@ Total de meia-entradas para idosos vendidas: {IdosoVendas};\n
 Total de inteiras vendidas: {IntVendas};\n
 Total de descontos vendidos: {DescontoVendas};\n
 Cortesias para DA e convidados: {DAcortesias};\n
-Cortesias para o curso de {curso1}: {CortCurso1};
-Cortesias para o curso de {curso2}: {CortCurso2};
-Total de cortesias para vendedores comissionados: {CortesiaFinal};
+Cortesias para o curso de {curso1}: {CortCurso1};\n
+Cortesias para o curso de {curso2}: {CortCurso2};\n
+Total de cortesias para vendedores comissionados: {CortesiaFinal};\n
 Total de dinheiro arrecadado: R${RsTotal};\n
 Total de dinheiro das meia-entradas: R${RsMeia};\n
 Total de dinheiro das inteiras: R${RsInt};\n
