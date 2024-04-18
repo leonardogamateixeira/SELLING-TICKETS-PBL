@@ -26,7 +26,7 @@ Selecione uma opção: ''')
         case "1":          
 # O progama será configurado pelo usuario e depois
 # o progama irá para a tela de vendas
-            ingressos = int(input("Digite a quantidade de ingressos: "))
+            ingressos = int(input("\nDigite a quantidade de ingressos: "))
             precoInt = float(input("Digite o preço do ingresso: R$"))
             precoMeia = float(input("Digite o preço da meia-entrada: R$"))
             precoDesc = float(input("Digite o preço do ingresso com desconto, caso não tenha digite 0: R$"))
@@ -36,7 +36,7 @@ Selecione uma opção: ''')
         case "2":
 # Versão do problema proposto vai ser selecionada e as os valores
 # do problema serão utilizados nas respectivas variáveis
-            print("Versão padrão selecionada\n")
+            print("\nVersão padrão selecionada\n")
             ingressos = 2000
             precoInt = 30      
             precoMeia = 15
@@ -65,8 +65,9 @@ EventoFim = 2
 CortCurso1 = 0
 CortCurso2 = 0
 
-while ingressos > 0 and EventoFim > 1:
-    while InvalidOp == False:
+while ingressos > 0 and int(EventoFim) > 1:
+    InvalidOp = True
+    while InvalidOp == True:
         NumOpIng = input('''
 -------Tela de Vendas------
 
@@ -78,48 +79,53 @@ while ingressos > 0 and EventoFim > 1:
                          
 Selecione um tipo de ingresso: ''')
         if NumOpIng.isdecimal() == True and 5 >= int(NumOpIng) >= 1:
-            InvalidOp = True
+            InvalidOp = False
         else:
-            print("Digite uma opção válida!")
+            print("\nDigite uma opção válida!\n")
 # o usuario seleciona qual tipo de ingresso será vendido e pergunta quantos ingressos foram 
 # vendidos e soma suas idades com o uma estrutura de repetição, que repetira a pergunta de
 # idade para cada ingresso que foi vendido.
+    InvalidOp = True
     while InvalidOp == True:
         CursoOp = input(f'''
-Qual o curso do vendedor?
 1- {curso1}
-2- {curso2} ''')
-        if CursoOp.isdecimal() and  2 >= int(CursoOp) >= 1:
+2- {curso2} 
+Qual o curso do vendedor? ''')
+        if CursoOp.isdecimal() == True and 2 >= int(CursoOp) >= 1:
             InvalidOp = False
         else:
-            print("Digite uma opção válida")
-
-    while InvalidOp == False:
-        VendasIng = input("Quantos ingressos foram vendidos? ")
+            print("\nDigite uma opção válida\n")
+    InvalidOp = True
+    while InvalidOp == True:
+        VendasIng = input("\nQuantos ingressos foram vendidos? ")
         if VendasIng.isdecimal() == True:
-            InvalidOp = True
+            InvalidOp = False
             VendasIng = int(VendasIng)
         else:
-            print("Digite uma opção válida")
+            print("\nDigite uma opção válida\n")
 
     IdadeSoma = 0
     for idade in range(0,VendasIng):
+        InvalidOp = True
         while InvalidOp == True:
-            idade = input("Digite a idade de cada cliente: ")
+            InvalidOp = True
+            idade = input("\nDigite a idade de cada cliente: ")
             if idade.isdecimal() == True and 120 >= int(idade) >= 1:
                 InvalidOp = False
-                IdadeSoma += int(idade)
+                idade = int(idade)
+                IdadeSoma += idade
             else:
-                print("Digite uma idade válida!")
+                print("\nDigite uma idade válida!\n")
 
     Cortesia = int(VendasIng) // 10
-
-    while InvalidOp == False:
+    InvalidOp = True
+    while InvalidOp == True:
         match NumOpIng:
 # Caso o usuario selecione a opção inteira 
             case "1":
                 ingressos -= VendasIng
                 IntVendas += VendasIng
+                InvalidOp = False
 # Caso o usuario selecione a opção meia-estudante
             case "2":
 # usei if-else para o usuario confirmar que as compras são validas
@@ -129,9 +135,11 @@ Qual o curso do vendedor?
                 if NumOpTipo == 1:
                     ingressos -= VendasIng
                     EstudanteVendas += VendasIng
+                    InvalidOp = False
                 else:
                     IdadeSoma -= idade
                     print("Garanta que todas as compras sejam comprovadas antes de continuar com o cadastro por favor.")
+                    InvalidOp = False
 
 # Caso o usuario selecione a opção meia-idoso
             case "3":
@@ -139,22 +147,27 @@ Qual o curso do vendedor?
                 if NumOpTipo == 1:
                     ingressos -= VendasIng
                     EstudanteVendas += VendasIng
+                    InvalidOp = False
                 else:
                     IdadeSoma -= idade
                     print("Garanta que todas as compras sejam comprovadas antes de continuar com o cadastro por favor.")
+                    InvalidOp = False
 # Caso o usuario selecione a opção desconto
             case "4":
                 NumOpTipo = int(input("Todas compras foram mostradas o devido comprovante de desconto?\n1-Sim\n2-Não"))
                 if NumOpTipo == 1:
                     ingressos -= VendasIng
                     EstudanteVendas += VendasIng
+                    InvalidOp = False
                 else:
                     IdadeSoma -= idade
                     print("Garanta que todas as compras sejam comprovadas antes de continuar com o cadastro por favor.")
+                    InvalidOp = False
 # Caso o usuario selecione a opção cortesia DA
             case "5":
                 ingressos -= VendasIng
-                DAcortesias += VendasIng     
+                DAcortesias += VendasIng   
+                InvalidOp = False  
             case _:
                 print("Digite uma opção válida!")      
 # Ao final o progama verifica se é possivel dar cortesias ao vendedor
@@ -164,8 +177,14 @@ Qual o curso do vendedor?
         if ingressos > 0:
 # Caso seja possivel serão mostradas as cortesias e os ingressos 
 # depois é perguntado ao usuario se gostaria de encerrar o evento
-            print(f"Foram dadas {Cortesia} cortesias\nainda restam {ingressos} ingressos.")
-            EventoFim = int(input("Gostaria de encerrar o evento?\n1-Sim\n2-Não"))
+            print(f"Foram dadas {Cortesia} cortesias ainda\nrestam {ingressos} ingressos.")
+            InvalidOp = True
+            while InvalidOp == True:
+                EventoFim = input("Gostaria de encerrar o evento?\n1-Sim\n2-Não")
+                if EventoFim.isdecimal() == True and  2 >= int(EventoFim) >= 1:
+                    InvalidOp = False
+                else:
+                    print("\nDigite uma opção válida\n")
         else:
 # Caso de para adcionar as cortesias e não restar mais ingressos sera impresso isso
             print(f"Foram dadas {Cortesia} cortesias\nnão restam mais ingressos.")
