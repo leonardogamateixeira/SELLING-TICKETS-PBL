@@ -28,12 +28,15 @@ Selecione uma opção: ''')
 # o progama irá para a tela de vendas
             InvalidOp = True
             while InvalidOp == True:
-                ingressos = int(input("\nDigite a quantidade de ingressos: "))
+                ingressos = input("\nDigite a quantidade de ingressos: ")
                 precoInt = float(input("Digite o preço do ingresso: R$"))
                 precoMeia = float(input("Digite o preço da meia-entrada: R$"))
                 precoDesc = float(input("Digite o preço do ingresso com desconto, caso não tenha digite 0: R$"))
                 if ingressos.isdecimal() == True:
-                    InvalidOp = True
+                    InvalidOp = False
+                    ingressos = int(ingressos)
+                else:
+                    print("Digite uma opção valida!")
 
             curso1 = input("Digite o primeiro curso que está participando das vendas: ")
             curso2 = input("Digite o segundo curso que está participando das vendas: ")
