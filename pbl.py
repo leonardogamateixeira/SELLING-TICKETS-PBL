@@ -13,7 +13,7 @@
 InvalidOp = True
 while InvalidOp == True:
     NumOpMenu = input('''
--------Menu de inicial---------
+-------Menu de Inicial--------
                       
 1- Para configurar o progama
 2- Para usar versão padrão(Evento EngComp da UEFS)
